@@ -1,0 +1,22 @@
+{
+	"extends": "stylelint-config-recommended-scss",
+	"plugins": [
+		"stylelint-scss"
+	],
+	"rules": {
+		"indentation": "tab",
+		"at-rule-no-unknown": null,
+    	"scss/at-rule-no-unknown": [
+			true,
+			{
+				"ignoreAtRules": [
+					"@layer",
+					"@responsive",
+					"@screen",
+					"@tailwind",
+					"@variants"
+				]
+			}
+		]
+	}
+}

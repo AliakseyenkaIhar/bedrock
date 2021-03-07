@@ -1,0 +1,22 @@
+{% extends 'layouts/layout.singular.twig' %}
+
+{% block content %}
+	<div
+		class="{{ post.post_class }} w-full h-auto page-404"
+		id="page-404"
+	>
+
+		<div class="container">
+			<header class="entry-header page-404__header">
+				<h1 class="entry-title page-404__title">{{ __('Oops! 404', 'marusia') }}</h1>
+			</header>
+
+			<div class="entry-content page-404__content">
+
+				<p>{{ __('This page doesn\'t exists', 'marusia') }}</p>
+
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

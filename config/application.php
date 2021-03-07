@@ -18,6 +18,8 @@ use function Env\env;
  */
 $root_dir = dirname(__DIR__);
 
+define( 'ROOT_DIR', $root_dir );
+
 /**
  * Document Root
  *

@@ -1,0 +1,11 @@
+vendor/
+node_modules/
+assets/img
+*.php
+*.twig
+*.png
+*.json
+*.yml
+LICENSE
+composer.lock
+*.txt

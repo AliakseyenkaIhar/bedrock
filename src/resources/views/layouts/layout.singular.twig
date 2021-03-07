@@ -1,0 +1,21 @@
+{% extends 'index.twig' %}
+
+{% block layout %}
+
+	{% block head %}
+		{% if mod('marusia_breadcrumbs_show', false) %}
+			<div class="">
+				<div class="container">
+					{{ breadcrumbs(_context) }}
+				</div>
+			</div>
+		{% endif %}
+	{% endblock %}
+
+	<div class="container">
+		{% block content %}
+			{% include 'content/content.single.twig' %}
+		{% endblock %}
+	</div>
+
+{% endblock %}

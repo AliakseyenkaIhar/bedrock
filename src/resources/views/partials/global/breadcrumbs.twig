@@ -1,0 +1,47 @@
+{% set separator = '<li role="separator" class="mr-2">/</li>' %}
+
+<ul
+	class="flex w-full h-auto overflow-x-auto breadcrumbs"
+	itemscope itemtype="http://schema.org/BreadcrumbList"
+	id="breadcrumbs"
+	aria-label="{{ __('Breadcrumbs', 'marusia') }}"
+>
+
+	{# Home #}
+	<li class="mr-2 breadcrumbs__item whitespace-nowrap" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+		<a
+			rel="nofollow"
+			itemprop="item"
+			class=""
+			href="{{ site.link }}"
+		>
+			{{ mod( 'marusia_breadcrumbs_front_title', __( 'Home', 'marusia' ) )|e('wp_kses_post') }}
+		</a>
+	</li>
+
+	{{ separator }}
+
+	{# Inner #}
+	{% for parent in ancestors %}
+		<li class="mr-2 breadcrumbs__item whitespace-nowrap" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+			<a
+				class=""
+				rel="nofollow"
+				itemprop="item"
+				href="{{ parent.link }}"
+			>
+				{{ parent.title|e('wp_kses_post') }}
+			</a>
+		</li>
+
+		{{ separator }}
+	{% endfor %}
+
+	{# Current #}
+	<li class="breadcrumbs__item_current breadcrumbs__item whitespace-nowrap" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+		<span aria-current="page">
+			{{ current_title|e('wp_kses_post') }}
+		</span>
+	</li>
+
+</ul>

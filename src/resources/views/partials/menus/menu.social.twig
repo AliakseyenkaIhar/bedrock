@@ -1,0 +1,24 @@
+{#
+ # Outputs social menu
+ #
+ # This mean no title will be shown
+ # All icons are handled by CSS - you can find it in resources/sass/includes/_social.scss
+ #}
+
+{% if social_menu.items|length %}
+	<ul
+		class="social-menu"
+	>
+		{% for item in social_menu.get_items %}
+			<li class="{{ item.classes|join(' ') }}">
+				<a
+					href="{{ item.link }}"
+					target="_blank"
+					class="relative inline-block w-5 h-5"
+				>
+					<span class="sr-only screen-reader-text">{{ item.title }}</span>
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+{% endif %}

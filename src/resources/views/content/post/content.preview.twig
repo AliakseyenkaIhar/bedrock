@@ -1,0 +1,24 @@
+<!-- Post-{{ post.ID }}  -->
+<article
+	class="{{ post.post_class }} w-full h-auto"
+	id="page-{{ post.ID }}"
+	itemscope itemtype="http://schema.org/Article"
+>
+
+	<header class="entry-header">
+		<h2 class="entry-title" itemprop="headline name">
+			<a href="{{ post.link }}" itemprop="url">
+				{{ post.title }}
+			</a>
+		</h2>
+	</header><!-- .entry-header -->
+
+	<div class="entry-preview" itemprop="description">
+		{{ post.preview.length(50).force.read_more(__('Continue Reading', 'marusia'))|e('wp_kses_post') }}
+	</div><!-- .entry-preview -->
+
+	<footer class="entry-footer">
+		<a href="{{ post.link }}">{{ __('Read more', 'marusia') }}</a>
+	</footer><!-- .entry-footer -->
+
+</article><!-- #post-{{ post.ID }} -->

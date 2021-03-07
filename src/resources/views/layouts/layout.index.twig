@@ -1,0 +1,23 @@
+{% extends 'index.twig' %}
+
+{% block layout %}
+
+	{% block head %}
+		{% if theme.theme_mod('marusia_breadcrumbs_show', false) %}
+			<div class="">
+				<div class="container">
+
+				</div>
+			</div>
+		{% endif %}
+	{% endblock %}
+
+	{% block content %}
+		<div class="container">
+			{% for post in posts %}
+				{% include 'content/content.twig' %}
+			{% endfor %}
+		</div>
+	{% endblock %}
+
+{% endblock %}

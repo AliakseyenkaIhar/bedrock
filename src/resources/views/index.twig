@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js" {{ site.language_attributes }}>
+<head>
+	<!-- Basic -->
+    <meta charset="{{ site.charset }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% if is_singular and fn('pings_open', queried) %}
+    	<link rel="pingback" href="{{ site.pingback_url }}" />
+	{% endif %}
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+	<meta name="msapplication-tap-highlight" content="no">
+	<!-- Phones Link Detection -->
+	<meta name="format-detection" content="telephone=no">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+	{% do action('marusia_before_wp_head') %}
+
+	{{ fn('wp_head') }}
+
+	{% do action('marusia_after_wp_head') %}
+
+</head>
+<body
+	class="overflow-x-hidden text-base antialiased min-h-screen {{ body_class }}"
+	itemscope itemtype="http://schema.org/WebPage"
+>
+	{% do action('aliha_before_header') %}
+
+	{% block header %}
+		{% include 'header.twig' %}
+		{% include 'partials/global/navigation.twig' %}
+		</header>
+	{% endblock %}
+
+    {% do action('marusia_before_content') %}
+
+    <main
+        id="content"
+        role="main"
+        class="w-full h-auto outline-none content"
+		tabindex="-1"
+    >
+        {% block layout %}{% endblock %}
+    </main>
+
+    {% do action('marusia_before_footer') %}
+
+	{% block footer %}
+		{% include 'footer.twig' %}
+	{% endblock %}
+
+	{% do action('marusia_before_wp_footer') %}
+
+	{{ fn('wp_footer') }}
+
+	{% do action('marusia_after_wp_footer') %}
+
+	</script>
+</body>
+</html>

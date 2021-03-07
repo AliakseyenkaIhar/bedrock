@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+
+$app = new Application();
+
+# add your commands
+$commands = [ 'MakePostType', 'MakeTaxonomy', 'MakeTemplate' ];
+
+foreach ( $commands as $command ) {
+    $command_class = '\Core\Console\\' . $command;
+	$app->add(new $command_class());
+}
+
+$app->run();

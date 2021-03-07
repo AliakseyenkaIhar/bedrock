@@ -1,0 +1,11 @@
+{% macro btn(label, class = '', id = '', type = 'button', icon = '', atts = '') %}
+	<button
+		type="{{ type|default('button') }}"
+		class="px-4 {{ class }}"
+		{% if id %}id="{{ id }}"{% endif %}
+		{{ atts }}
+	>
+		{% if icon %}<span class="marusia-icon marusia-{{ icon }}"></span>{% endif %}
+		{{ label|e('html') }}
+	</button>
+{% endmacro %}

@@ -1,0 +1,59 @@
+{#
+ # Outputs menu
+ #
+ # Params:
+ # menu | menu object defined in global context.
+ # id | menu id.
+ # ul_class | menu parent class.
+ # li_class | menu li tag class.
+ # el_class | menu child tag class (anchor mostly).
+ #}
+
+{% if menu.items|length %}
+	<ul
+		class="{{ ul_class }}"
+		id="{{ id|default('primary-menu') }}"
+	>
+		{% for item in menu.items %}
+
+			<li class="relative group {{ li_class }} {{ item.classes|join(' ') }}" itemprop="name">
+				{% if item.current %}
+					{# Current page #}
+					<span class="{{ el_class }}">
+						{{ item.title }}
+					</span>
+
+					{% if item.current_item_parent %}
+						{% include 'partials/menus/menu.dropdown.twig' with {
+							items: item.children
+						} only %}
+					{% endif %}
+
+				{% else %}
+					<a
+						href="{{ item.link }}"
+						target="{{ item.target }}"
+						itemprop="url"
+						class="{{ el_class }}"
+					>
+						{{ item.title }}
+					</a>
+
+					{% if item.current_item_parent %}
+						{% include 'partials/menus/menu.dropdown.twig' with {
+							items: item.children
+						} only %}
+					{% endif %}
+
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul><!-- #{{ id|default('primary-menu') }} -->
+{% else %}
+	{% if 'administrator' in user.roles|keys %}
+		{# Add link to a menus for administrator #}
+		<a href="{{ site.url ~ '/wp-admin/nav-menus.php' }}" target="_blank">
+			{{ __('Set up menu', 'marusia') }}
+		</a>
+	{% endif %}
+{% endif %}

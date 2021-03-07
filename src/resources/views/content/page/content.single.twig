@@ -1,0 +1,29 @@
+{% extends 'layouts/layout.singular.twig' %}
+
+{% block content %}
+	<div class="container">
+
+		<!-- Page-{{ post.ID }}  -->
+		<article
+			class="{{ post.post_class }} w-full h-auto prose"
+			id="page-{{ post.ID }}"
+		>
+
+			<header class="entry-header page-header">
+				<h1 class="entry-title page-title">{{ post.title }}</h1>
+			</header><!-- .page-header -->
+
+			<div class="entry-content page-content">
+				{{ post.content }}
+			</div><!-- .page-content -->
+
+			<footer class="entry-footer page-footer">
+				{% if post.edit_link %}
+					<a href="{{ post.edit_link }}">{{ __('Edit post', 'marusia') }}</a>
+				{% endif %}
+			</footer><!-- .page-footer -->
+
+		</article><!-- #page-{{ post.ID }} -->
+
+	</div><!-- .container -->
+{% endblock %}

@@ -1,0 +1,6 @@
+@import '@sass/mixins/_fonts.scss';
+
+// =============================================================================
+// Include custom font
+// =============================================================================
+@include font-face('Museo Sans Cyrl 100', '../fonts/MuseoSansCyrl/MuseoSansCyrl-100', 'swap', 300, 'normal');

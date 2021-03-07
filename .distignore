@@ -1,0 +1,14 @@
+.distignore
+.editorconfig
+/.git
+.gitignore
+/node_modules
+aliha
+.eslintignore
+.eslintrc.json
+.prettierignore
+.prettier.json
+.stylelintignore
+.stylelintrc.json
+phpcs.xml
+/wpcs

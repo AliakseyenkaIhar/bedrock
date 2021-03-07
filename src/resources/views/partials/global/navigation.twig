@@ -1,0 +1,19 @@
+{#
+ # Outputs primary navigation
+ #}
+
+<nav
+	class="navigation"
+	role="navigation"
+	id="header-navigation"
+	itemscope itemtype="http://schema.org/SiteNavigationElement"
+>
+	<div class="container">
+
+		{% include 'partials/menus/menu.general.twig' with {
+			menu: primary_menu,
+			ul_class: 'primary-menu'
+		} %}
+
+	</div>
+</nav>

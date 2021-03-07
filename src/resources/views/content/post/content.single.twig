@@ -1,0 +1,26 @@
+{% extends 'layouts/layout.singular.twig' %}
+
+{% block content %}
+
+	<article
+		class="{{ post.post_class }} w-full h-auto prose"
+		id="post-{{ post.ID }}"
+		itemscope itemtype="http://schema.org/Article"
+	>
+
+		<header class="entry-header">
+			<h1 class="entry-title" itemprop="headline name">{{ post.title }}</h1>
+		</header>
+
+		<div class="entry-content" itemprop="articleBody">
+			{{ post.content|e('wp_kses_post') }}
+		</div>
+
+		<footer class="entry-footer">
+			{% if post.edit_link %}
+				<a href="{{ post.edit_link }}">{{ __('Edit post', 'marusia') }}</a>
+			{% endif %}
+		</footer>
+
+	</article>
+{% endblock %}

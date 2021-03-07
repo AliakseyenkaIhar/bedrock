@@ -1,0 +1,17 @@
+/**
+ * Core WordPress classes
+ * Also place for content and Gutenberg styles
+ */
+@import '@sass/includes/_wordpress.scss';
+
+/**
+ * Social icons for navigation menu
+ * We are not sure of user input - so we have to be prepared.
+ * If custom menu is not your case - you can freely remove it
+ */
+@import '@sass/includes/_social.scss';
+
+/**
+ * Custom fonts
+ */
+@import '@sass/includes/_fonts.scss';

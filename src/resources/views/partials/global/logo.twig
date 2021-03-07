@@ -1,0 +1,49 @@
+{#
+ # Outputs logo
+ #
+ # Params:
+ # logo | image id or path to custom image
+ # is_front | is ot front page or not. Returns true only on front page
+ # display_header_text | define show text (site name and description at logo) or not
+ #}
+
+{% if logo %}
+
+	{# Additional check #}
+	{% set logo_src = logo %}
+	{% if logo matches '/^\\d+$/' %}
+		{# if logo is integer (id) #}
+		{% set logo_src = Image(logo).src %}
+	{% endif %}
+
+	{% if is_front and mod('marusia_unlink_logo_on_home', true) %}
+		<div class="flex items-end logo" title="{{ site.name }}" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+
+			<div class="w-24 h-24">
+				<img class="object-contain w-full h-full logo__img" src="{{ logo_src }}" alt="{{ site.name }}">
+			</div>
+
+			{% if display_header_text %}
+				<span class="ml-1 logo__description">
+					<span class="block text-3xl font-bold logo__title">{{ site.name }}</span>
+					<span class="logo__tagline">{{ site.description }}</span>
+				</span>
+			{% endif %}
+		</div>
+	{% else %}
+		<a class="flex items-end logo logo-link" href="{{ site.link }}" title="{{ __('Home', 'marusia') }}" itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+
+			<div class="w-24 h-24">
+				<img class="object-contain w-full h-full logo__img" src="{{ logo_src }}" alt="{{ site.name }}">
+			</div>
+
+			{% if display_header_text %}
+				<span class="ml-1 logo__description">
+					<span class="block text-3xl font-bold logo__title">{{ site.name }}</span>
+					<span class="logo__tagline">{{ site.description }}</span>
+				</span>
+			{% endif %}
+		</a>
+	{% endif %}
+
+{% endif %}

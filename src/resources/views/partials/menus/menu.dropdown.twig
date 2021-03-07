@@ -1,0 +1,23 @@
+<ul
+	class="dropdown-menu {{ ul_class }} absolute z-30 duration-200 transform -translate-x-1/2 translate-y-6 opacity-0 pointer-events-none top-full left-1/2 group-hover:opacity-100 group-hover:pointer-events-auto group-hover:-translate-y-2"
+>
+	{% for item in items %}
+		<li class="{{ li_class }} {{ item.classes|join(' ') }}" itemprop="name">
+			{% if item.current %}
+				{# Current page #}
+				<span class="{{ el_class }}">
+					{{ item.title }}
+				</span>
+			{% else %}
+				<a
+					href="{{ item.link }}"
+					target="{{ item.target }}"
+					itemprop="url"
+					class="{{ el_class }}"
+				>
+					{{ item.title }}
+				</a>
+			{% endif %}
+		</li>
+	{% endfor %}
+</ul>

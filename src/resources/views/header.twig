@@ -1,0 +1,9 @@
+<header
+	class="w-full h-auto header"
+	id="header"
+	role="banner"
+	itemscope itemtype="http://schema.org/WPHeader"
+>
+	<a class="sr-only skip-link focus:not-sr-only" href="#content">{{ __( 'Skip to the content', 'marusia') }}</a>
+
+	{% do action('marusia_before_navigation') %}
