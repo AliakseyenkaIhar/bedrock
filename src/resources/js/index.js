@@ -8,7 +8,7 @@ import 'focus-visible';
 /**
  * Local files
  */
-// import './modernizr';
+import './modernizr';
 import '@/marusia.font';
 
 /**
